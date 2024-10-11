@@ -1,14 +1,12 @@
 package com.menciasrodrigo;
 
-import com.menciasrodrigo.services.ClienteHttp;
+import com.menciasrodrigo.services.MenuMonedas;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-
-        ClienteHttp pruebaConexion = new ClienteHttp();
-
-        pruebaConexion.creandoConexion("USD");
         
+        MenuMonedas menuMonedas = new MenuMonedas();
+        
+        menuMonedas.menu();
     }
 }

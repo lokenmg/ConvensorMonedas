@@ -1,17 +1,21 @@
 package com.menciasrodrigo.services;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpConnectTimeoutException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 import com.menciasrodrigo.models.ApiResponse;
+import com.menciasrodrigo.models.MonedaEntity;
 
 public class ClienteHttp {
 // Setting URL
 String url_str = "https://v6.exchangerate-api.com/v6/ac5a45717dc44ece52e64d23/latest/";
 
-public void creandoConexion(String moneda){
+public List<MonedaEntity> creandoConexion(String moneda){
 
     try {
         HttpClient client = HttpClient.newHttpClient();
@@ -21,14 +25,15 @@ public void creandoConexion(String moneda){
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        GsonMoneda gson = new GsonMoneda();
-        ApiResponse apiResponse = gson.obtenerRespuestas(response.body());
+        ControlMonedas controlMonedas = new ControlMonedas();
+        ApiResponse apiResponse = controlMonedas.obtenerRespuestas(response.body());
         
-        System.out.println(apiResponse);
+        return controlMonedas.crearMonedas(apiResponse);
 
 
-    } catch (Exception e) {
-        // TODO: handle exception
+    } catch ( InterruptedException| IOException  e) {
+        System.out.println("Ocurrio un error: " + e);
+        return null;
     }
 
     

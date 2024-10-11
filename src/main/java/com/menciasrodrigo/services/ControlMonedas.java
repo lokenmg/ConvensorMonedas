@@ -1,5 +1,6 @@
 package com.menciasrodrigo.services;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.menciasrodrigo.models.ApiResponse;
 import com.menciasrodrigo.models.MonedaEntity;
-public class GsonMoneda {
+
+public class ControlMonedas {
 
 
     public ApiResponse obtenerRespuestas (String json){
@@ -29,4 +31,20 @@ public class GsonMoneda {
         return monedas;
     }
 
+    public double cambio(List<MonedaEntity> monedas, String moneda, double cantidad){
+        double conversion = 0;
+        for (MonedaEntity monedaEntity : monedas) {
+            if (monedaEntity.moneda().equals(moneda)) {
+                conversion = (monedaEntity.valor() * cantidad);
+            }
+        }
+        return conversion;
+    }
+
+    public void mostrarResultado(double cantidad, double conversion, String moneda1, String moneda2){
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        System.out.println("El valor de: " + df.format(cantidad) + " [ " + moneda1 + " ] " + "corresponde al valor final de ==>> " + df.format(conversion) + " [ "
+            + moneda2 +" ] ");
+    }
 }
