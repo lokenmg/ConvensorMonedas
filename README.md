@@ -13,11 +13,17 @@
     <dd><h3>Versión 1.0 finalizada</h3>
     </dd>
 
-<dt>Demostración de funcionamiento</dt>  
+<dt> <h2> Demostración de funcionamiento </h2></dt>  
   <dd>
       <li><h3>Demostracion del menú de uso:</h3></li>
-      <p></p>
-      ![imagen](https://github.com/user-attachments/assets/bc9dc4fa-ae8e-4d3a-bef7-506abfab3cbc)
-      <li>Elección de moneda y valor a convertir:</li>
-  </dd>
+      
+![imagen](https://github.com/user-attachments/assets/bc9dc4fa-ae8e-4d3a-bef7-506abfab3cbc)
+    
+ <li> <h3> Elección de moneda, valor a convertir y resultado: </h3></li>
+ 
+ ![imagen](https://github.com/user-attachments/assets/135dc572-9c71-4d15-a36e-9de7840267f8)
+
+</dd>
+<dt> <h2> Tecnologías utilizadas </h2> </dt>
+<li>java 11</li>
 </dl>
